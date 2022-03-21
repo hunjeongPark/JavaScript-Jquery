@@ -39,35 +39,35 @@ function fn_createGridLayout() {
 				return 'style="color: skyblue"';
 			}
 		},
-		/* Select Colom TemplateCode Row Important View */
-		onCellSelect: function(rowid, index, contents, event){
-			var cm = $(this).jqGrid('getGridParam', 'colModel');
-			if(cm[index].name == "templateCode") {
-        //Specific Cell Click is Event : onCellSelect
-				sessionStorage.setItem("templateCode", $("#jqGrid").jqGrid("getRowData", rowid).templateCode);
-				UIHandler.showStep2();
-				
-				//load Template Details Data
-				fn_sendProfileKeyName();
-				fn_loadTemplate(sessionStorage.getItem("templateCode"));
-				history.pushState(null, null, location.href);
-			}
-		},
-    //MultiSelect On And One Click Show Grid Template To Page
-		beforeSelectRow : function(rowid, e){
-			$("#jqGrid").jqGrid('resetSelection');
-			var grid = $("#jqGrid");
-			grid.resetSelection();
-		},
-		
-		/* Select Colom TemplateCode Color 변경 */
-		afterInsertRow: function(rowid, rowdata, rowelem) {
-			$("#"+rowid).find("td[aria-describedby=jqGrid_templateCode]").css("color", "#ACACE7");
-			$("#"+rowid).find("td[aria-describedby=jqGrid_templateCode]").css("font-weight", "bold");
-		},
-        loadComplete: function(){
-            $('#lui_grid').removeClass('ui-widget-overlay jqgrid-overlay');
-            console.log("loaded grid");
-        }
+	/* Select Colom TemplateCode Row Important View */
+	onCellSelect: function(rowid, index, contents, event){
+		var cm = $(this).jqGrid('getGridParam', 'colModel');
+		if(cm[index].name == "templateCode") {
+			//Specific Cell Click is Event : onCellSelect
+			sessionStorage.setItem("templateCode", $("#jqGrid").jqGrid("getRowData", rowid).templateCode);
+			UIHandler.showStep2();
+
+			//load Template Details Data
+			fn_sendProfileKeyName();
+			fn_loadTemplate(sessionStorage.getItem("templateCode"));
+			history.pushState(null, null, location.href);
+		}
+	},
+	//MultiSelect On And One Click Show Grid Template To Page
+	beforeSelectRow : function(rowid, e){
+		$("#jqGrid").jqGrid('resetSelection');
+		var grid = $("#jqGrid");
+		grid.resetSelection();
+	},
+
+	/* Select Colom TemplateCode Color 변경 */
+	afterInsertRow: function(rowid, rowdata, rowelem) {
+		$("#"+rowid).find("td[aria-describedby=jqGrid_templateCode]").css("color", "#ACACE7");
+		$("#"+rowid).find("td[aria-describedby=jqGrid_templateCode]").css("font-weight", "bold");
+	},
+	loadComplete: function(){
+	    $('#lui_grid').removeClass('ui-widget-overlay jqgrid-overlay');
+	    console.log("loaded grid");
+	}
     });
 } 
