@@ -13,6 +13,18 @@ window.onpopstate = function () {
 	}
 };
 
+window.onpopstate = function () {
+	var prevUrl = location.href;
+	alert(prevUrl);
+
+	//Controll To CurrentPage And Use Id For Step div match
+	if(prevUrl.indexOf("template_list") >= 0 && $("#step1").hasClass("hide")) {
+		UIHandler.showStep1();
+	} else {
+		history.back();
+	}
+};
+
 // UIHandler Controll show step
 let UIHandler = {
 	showStep1 : function() {
