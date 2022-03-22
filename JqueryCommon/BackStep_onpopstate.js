@@ -1,18 +1,4 @@
 //Jquery - HTML5, Chrome, FireFox, Edge .... > onpopstate Backstep Controll To current Page
-
-window.onpopstate = function () {
-    var pageUrl = location.href;
-    alert(pageUrl);
-    
-    //Controll To CurrentPage And Use Id For Step div match
-    if(prevUrl.indexOf([currentPageName]) < 0 && $("#step1").hasClass("hide")) {
-		history.back();
-	} else {
-    //step1,2,3,4.... Step Show the One Page Jquery Script
-		UIHandler.showStep1();
-	}
-};
-
 window.onpopstate = function () {
 	var prevUrl = location.href;
 	alert(prevUrl);
@@ -26,6 +12,7 @@ window.onpopstate = function () {
 };
 
 // UIHandler Controll show step
+//step1,2,3,4.... Step Show the One Page Jquery Script
 let UIHandler = {
 	showStep1 : function() {
 		this.hideAllStep();
